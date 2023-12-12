@@ -1,0 +1,40 @@
+<div class="root">
+  <div class="navbar has-background-dark">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <h1 class="app-name has-gradient-text">My ' To Do ' List</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="board">
+    <div class="board-bar">
+      <p class="board-name">A List Of What I Will Do To Get A Jop .
+            <span class="contact-1">Contact Me : </span>mahmoudfarrag6644@gmail.com
+      </p>
+    </div>
+
+    <div class="board-wrapper">
+
+      <div class="board-columns" cdkDropListGroup>
+        <div class="board-column" *ngFor="let column of board.columns">
+
+          <div class="column-title">
+            {{column.name}}
+            <button class="task-top" (click)="openTaskInput(column)">Add Task+</button>
+          </div>
+          <div class="tasks-container"
+          cdkDropList
+          [cdkDropListData]="column.tasks"
+          (cdkDropListDropped)="drop($event)">
+            <div class="task-content" >
+            <div class="task" *ngFor="let item of column.tasks" cdkDrag [ngStyle]="{'background-color': getRandomColor()}">
+              {{ item }}
+            </div>
+          </div>
+          </div>
+      </div>
+      </div>
+    </div>
+
+</div>
